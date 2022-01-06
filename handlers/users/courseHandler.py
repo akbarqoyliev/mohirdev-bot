@@ -24,7 +24,7 @@ async def back_courses(call: CallbackQuery, state: FSMContext):
 async def get_teacher_courses(call: CallbackQuery):
     teacher_nickname = str(call.data)[8:]
     if teacher_nickname in instuctors.keys():
-        teacherCourses = getTeacherCoursesKeyboard(teacher_nickname)
+        teacherCourses = await getTeacherCoursesKeyboard(teacher_nickname)
         await call.message.edit_reply_markup(reply_markup=teacherCourses)
 
 @dp.callback_query_handler(course_callback.filter(item_name='back'))

@@ -81,7 +81,7 @@ def getArticle(blogName):
     article += date
     return title
 
-def getArticlePiece(blogName):
+async def getArticlePiece(blogName):
     output = {}
     page = f"https://mohirdev.uz/{blogName}"
     r = requests.get(page)

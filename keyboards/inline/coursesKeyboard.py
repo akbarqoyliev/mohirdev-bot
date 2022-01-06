@@ -9,7 +9,7 @@ for key, value in instuctors.items():
     instuctorsKeyboard.insert(InlineKeyboardButton(text=value, callback_data=teacher_callback.new(item_name=key)))
 instuctorsKeyboard.insert(InlineKeyboardButton(text='⬅️ Ortga', callback_data=teacher_callback.new(item_name='back')))
 
-def getTeacherCoursesKeyboard(teacher_nickname):
+async def getTeacherCoursesKeyboard(teacher_nickname):
     teacherCourses = InlineKeyboardMarkup(row_width=1)
     for course in instuctor_courses[teacher_nickname]:
         teacherCourses.insert(InlineKeyboardButton(text=course,callback_data=course_callback.new(item_name=coursesList[course])))

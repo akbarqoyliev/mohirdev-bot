@@ -20,12 +20,11 @@ from data.coursesData import instuctorsImage, instuctors
 
 @dp.message_handler(text_contains="Blog", state=None)
 async def select_blog(message: Message, state: FSMContext):
-    BlogsMenu = getBlogKeyboard(0)
+    BlogsMenu = await getBlogKeyboard(0)
     await message.answer(f"{message.text}", reply_markup=cancel_button)
     await message.answer(text='Maqola tanlang 👇',reply_markup=BlogsMenu)
     await BlogState.blogstate.set()
     await state.update_data(page_number=0)
-    await state.update_data(variable = False)
 
 @dp.message_handler(text_contains="Kurslar")
 async def select_course(message: Message):
@@ -44,7 +43,7 @@ async def get_about(message: Message):
     text += "📣 <a href='https://t.me/mohirdev'>Telegram kanal</a>\n"
     text += "🤖 <a href='https://t.me/mohirdev_bot'>Savol va takliflar uchun bot</a>\n"
     text += "📍 <a href='https://www.google.com/maps?cid=6451963227536757315'>Bizning manzil</a>"
-    await message.answer(text=text)
+    await message.answer(text=text,disable_web_page_preview=True)
 
 @dp.message_handler(text_contains='Bekor qilish')
 async def cancel(message: Message,call: CallbackQuery):

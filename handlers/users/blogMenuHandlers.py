@@ -1,4 +1,5 @@
 import logging
+from re import A
 from loader import dp
 
 from aiogram import types
@@ -21,7 +22,7 @@ async def back_blog(call: CallbackQuery, state: FSMContext):
     page_num = data.get('page_number')
     if page_num != 0:
         page_num -= 1
-        blog_menu = getBlogKeyboard(page_num)
+        blog_menu = await getBlogKeyboard(page_num)
         await call.message.edit_reply_markup(reply_markup=blog_menu)
         await state.update_data(page_number=page_num)
     else:
@@ -31,9 +32,9 @@ async def back_blog(call: CallbackQuery, state: FSMContext):
 async def next_blog(call: CallbackQuery, state: FSMContext):  
     data = await state.get_data()
     page_num = data.get('page_number')
-    if getBlogKeyboard(page_num+1):
+    if await getBlogKeyboard(page_num+1):
         page_num += 1
-        blog_menu = getBlogKeyboard(page_num)
+        blog_menu = await getBlogKeyboard(page_num)
         await call.message.edit_reply_markup(reply_markup=blog_menu)
         await state.update_data(page_number=page_num)
     else:
@@ -42,20 +43,20 @@ async def next_blog(call: CallbackQuery, state: FSMContext):
 
 @dp.callback_query_handler(blog_callback.filter(), state=BlogState.blogstate)
 async def get_article(call: CallbackQuery, state: FSMContext):
-    data = await state.get_data()
-    variable = data.get('variable')
     await call.answer("Maqola tayyorlanmoqda", cache_time=60, show_alert=False)
     data = await state.get_data()
     page_num = data.get('page_number')
     k = 0
     for value in blogNames[int(page_num)].values():
         if k == int(call.data[-1]):
-            response = getArticlePiece(value)
-            keyboard = readingArticle(value)
+            response = await getArticlePiece(value)
+            keyboard = await readingArticle(value)
             photo = blogPhotos[value]
             break
         k += 1
+    await call.message.delete()
     await call.message.answer_photo(photo=photo, caption=response['article'], reply_markup=keyboard)
+    await call.message.answer(text='Maqola tanlang 👇',reply_markup=await getBlogKeyboard(page_num))
 
 @dp.callback_query_handler(text='delete', state=BlogState.blogstate)
 async def delete_article(call: CallbackQuery, state: FSMContext):  

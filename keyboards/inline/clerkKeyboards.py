@@ -1,6 +1,6 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-def readingArticle(name):
+async def readingArticle(name):
     deleteKeyboard=InlineKeyboardMarkup(
         inline_keyboard=[
             [

@@ -11,7 +11,7 @@ next_button = InlineKeyboardButton(text="➡️", callback_data="next")
 back_button = InlineKeyboardButton(text="⬅️", callback_data="back")
 delete_button = InlineKeyboardButton(text="❌", callback_data="delete")
 
-def getBlogKeyboard(pageNumber):
+async def getBlogKeyboard(pageNumber):
     if pageNumber < len(blogNames):
         i = 0
         Blogs = blogNames[pageNumber]
