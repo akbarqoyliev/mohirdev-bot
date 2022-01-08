@@ -32,7 +32,7 @@ instuctorsImage={
     'ulugbeksamigjonov':'https://mohirdev.uz/wp-content/uploads/2021/06/1603727778403.jpeg'
 }
 
-instuctor_courses={
+instuctorCourses={
     'ahmadjon89':['Php dasturlash tili asoslari'],
     'anvarnarzulla':['Mukammal Telegram Bot','Dasturlash Asoslari. Python','Django 3 – Pythonda Full stack Web Dasturlash',"Maʼlumotlar tuzilmasi va algoritmlar"],
     'aqudrat':['C++ dasturlash asoslari'],
@@ -49,7 +49,7 @@ instuctor_courses={
     'ulugbeksamigjonov':["Bootstrap 5 bo’yicha mukammal kurs (2021)","HTMLda dasturlash","CSS bo’yicha mukammal kurs (2021)"]
 }
 
-instuctors_data={
+instuctorsData={
     'ahmadjon89':"""Xashimov Ahmadjon 2006-2010 yillarda TATU Fargona filialida bakalavr, 2010-2012 yillarda magistraturani tamomlaganman. 2012-2019 yillarda TATU FFda assistent, katta o'qituvchi lavozimlarida Obyektga yo'naltirilgan dasturlash, C++da dasturlash, SQLda dasturlash, Web dasturlash kabi fanlardan dars berganman.
 
 Web dasturlash, dasturlash yo'nalishlari bo'yicha o'quv kurslarini 2010 yildan buyon o'rgatib kelmoqdaman. Kurslarda asosan amaliy mashg'ulotlarga ko'proq urg'u berilgan. Maqsad talabalar kursni egallagandan keyin o'zi mustaqil amaliy lohiyalarni bajara olishiga erishishdir. Amalga oshirilgan loyihalardan namunalar:
@@ -80,7 +80,7 @@ Web dasturlash, dasturlash yo'nalishlari bo'yicha o'quv kurslarini 2010 yildan b
 'aqudrat':""
 }
 
-coursesList = {'45 Minutda HTML5': '45-minutda-html5',
+courses = {'45 Minutda HTML5': '45-minutda-html5',
  'ASP .Net Core MVC – batafsil': 'asp-net-core-mvc-batafsil',
  'Algoritmlar: Leetcode da masala yechish': 'algoritmlar-leetcode-da-masala-yechish',
  'Android Studio – Retrofit bilan ishlash': 'android-studio-retrofit-bilan-ishlash',
@@ -116,3 +116,54 @@ coursesList = {'45 Minutda HTML5': '45-minutda-html5',
  'TypeScript asoslari': 'typescript-asoslari',
  'Xcode – Oddiy test ilovasini ishlab chiqish': 'xcode-oddiy-test-ilovasini-ishlab-chiqish',
  'Yii2 framework bo’yicha o’zbek tilida darslar': 'yii2-framework-boyicha-ozbek-tilida-darslar'}
+
+freeCourses = {'45 Minutda HTML5': '45-minutda-html5',
+ 'ASP .Net Core MVC – batafsil': 'asp-net-core-mvc-batafsil',
+ 'Algoritmlar: Leetcode da masala yechish': 'algoritmlar-leetcode-da-masala-yechish',
+ 'Android Studio – Retrofit bilan ishlash': 'android-studio-retrofit-bilan-ishlash',
+ 'Blue React JS (O’zbek tilidagi React kursi)': 'blue-react-js-ozbek-tilidagi-react-kursi',
+ 'Bootstrap 5 bo’yicha mukammal kurs (2021)': 'bootstrap-5-boyicha-mukammal-kurs-2021',
+ 'CSS bo’yicha mukammal kurs (2021)': 'css-2021',
+ 'Dasturlash Asoslari. Python': 'python',
+ 'Django 3 – Pythonda Full stack Web Dasturlash': 'django',
+ 'Django Rest Framework darslari': 'django-rest-framework-darslari',
+ 'Docker haqida batafsil': 'docker-haqida-batafsil',
+ 'Flutter – Android &amp; iOS mobil dasturlash (Boshlovchilar uchun)': 'flutter-android-ios-mobil-dasturlash-boshlovchilar-uchun',
+ 'Frontend dasturlash asoslari. Saralash': 'frontend-dasturlash-asoslari-saralash',
+ 'Full-Stack JavaScript To’liq Kurs va Praktikalar.': 'full-stack-javascript-toliq-kurs-va-praktikalar',
+ 'Full-Stack ReactJS. Real Proyektlar': 'full-stack-reactjs-real-proyektlar',
+ 'Fullstack .NET dasturchi': 'fullstack-net-dasturchi',
+ 'GO dasturlash tili': 'go-dasturlash-tili',
+ 'Git versiya boshqaruv tizimi': 'git-versiya-boshqaruv-tizimi',
+ 'HTMLda dasturlash': 'htmlda-dasturlash',
+ 'Laravel PHP Framework. Boshlovchilar uchun': 'laravel-php-framework-boshlovchilar-uchun',
+ 'Maʼlumotlar tuzilmasi va algoritmlar': 'algoritmlar',
+ 'Nodejsda amaliyot. Blog loyihasi': 'nodejsda-amaliyot-blog-loyihasi',
+ 'React Asoslari 2021': 'react-asoslari-2021',
+ 'SOLID Tamoyillari': 'solid-tamoyillari',
+ 'TensorFlow.js ga kirish': 'tensorflow-js-ga-kirish',
+ 'TypeScript asoslari': 'typescript-asoslari',
+ 'Xcode – Oddiy test ilovasini ishlab chiqish': 'xcode-oddiy-test-ilovasini-ishlab-chiqish',
+ 'Yii2 framework bo’yicha o’zbek tilida darslar': 'yii2-framework-boyicha-ozbek-tilida-darslar'}
+
+paidCourses = {'C++ dasturlash asoslari': 'c-dasturlash-asoslari',
+ 'HTML, CSS, Bootstrap, JS 7+ loyiha': 'html-css-bootstrap-js-7-loyiha-from-scratch-to-end',
+ 'JavaScript To’liq Kurs – “From 0 to Hero”': 'javascript-toliq-kurs-from-0-to-hero',
+ 'Mukammal Telegram Bot': 'telegram',
+ 'Php dasturlash tili asoslari': 'php-dasturlash-tili-asoslari',
+ 'Professional Node.JS. Noldan e’lonlar saytini yaratamiz': 'professional-node-js-noldan-elonlar-saytini-yaratamiz-2',
+ 'React JS To’liq Kurs – “From 0 To Hero”. 10ta real loyiha': 'react-js-toliq-kurs-from-0-to-hero-10ta-real-loyiha',
+ 'StartDroid – Android ilovalar tuzish': 'startdroid-android-ilovalar-tuzish',
+ }
+
+programmingLanguageCourses = {'C++ dasturlash asoslari': 'c-dasturlash-asoslari',
+ 'Dasturlash Asoslari. Python': 'python',
+ 'Flutter – Android &amp; iOS mobil dasturlash (Boshlovchilar uchun)': 'flutter-android-ios-mobil-dasturlash-boshlovchilar-uchun',
+ 'GO dasturlash tili': 'go-dasturlash-tili',
+ 'JavaScript To’liq Kurs – “From 0 to Hero”': 'javascript-toliq-kurs-from-0-to-hero',
+ 'Php dasturlash tili asoslari': 'php-dasturlash-tili-asoslari',}
+
+courseTypes = {'programming_languages' : programmingLanguageCourses,
+ 'free_courses' : freeCourses,
+ 'paid_courses' : paidCourses,
+ 'courses' : courses}

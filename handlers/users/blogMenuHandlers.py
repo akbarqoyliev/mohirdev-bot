@@ -69,7 +69,10 @@ async def cancel(message: Message, state: FSMContext):
     await state.update_data(variable = False)
     await state.finish()
 
-
+@dp.callback_query_handler(text='delete')
+async def delete_article(call: CallbackQuery, state: FSMContext):  
+    # await call.message.delete_reply_markup()
+    await call.message.delete()
 
 
 

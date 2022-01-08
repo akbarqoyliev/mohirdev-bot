@@ -46,7 +46,7 @@ async def get_about(message: Message):
     await message.answer(text=text,disable_web_page_preview=True)
 
 @dp.message_handler(text_contains='Bekor qilish')
-async def cancel(message: Message,call: CallbackQuery):
+async def cancel(message: Message):
     await message.answer(text="Kerakli bo'limni tanlang 👇",reply_markup=menuStart)
 
 
