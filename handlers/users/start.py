@@ -1,4 +1,4 @@
-import logging
+# import logging
 # import asyncpg
 from loader import dp
 # from data.config import ADMINS
