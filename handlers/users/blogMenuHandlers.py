@@ -7,6 +7,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters import factory, state
 from aiogram.types import Message, CallbackQuery, inline_keyboard, message
 
+from keyboards.default.assistantKeyboards import cancel_button
 from keyboards.inline.blogsKeyboard import getBlogKeyboard
 from keyboards.inline.callback_data import blog_callback
 from keyboards.inline.clerkKeyboards import readingArticle
@@ -15,6 +16,14 @@ from states.blogPages import BlogState
 from data.categoryData import blogNames, blogPhotos
 from filters.getEditData import getArticle, getArticlePiece
 
+
+@dp.message_handler(text_contains="Blog", state=None)
+async def select_blog(message: Message, state: FSMContext):
+    BlogsMenu = await getBlogKeyboard(0)
+    await message.answer(f"{message.text}", reply_markup=cancel_button)
+    await message.answer(text='Maqola tanlang 👇',reply_markup=BlogsMenu)
+    await BlogState.blogstate.set()
+    await state.update_data(page_number=0)
 
 @dp.callback_query_handler(text='back', state=BlogState.blogstate)
 async def back_blog(call: CallbackQuery, state: FSMContext):  
