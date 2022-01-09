@@ -7,7 +7,7 @@ from keyboards.inline.practicumKeyboard import practicumMapkup
 
 
 @dp.message_handler(text_contains="Praktikum")
-async def select_course(message: Message):
-    await message.answer(f"Praktikum kurslar bo'limi 👇", reply_markup=practicumMapkup)
-    await message.answer(text="💻 Kurslar", reply_markup=cancel_button)
+async def practicum_menu(message: Message):
+    await message.answer(text="📝 Praktikum", reply_markup=cancel_button)
+    await message.answer(text="Praktikum kurslar bo'limi 👇", reply_markup=practicumMapkup)
 
