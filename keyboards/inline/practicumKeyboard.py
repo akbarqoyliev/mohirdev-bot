@@ -5,5 +5,5 @@ from data.practicum import praticumDict
 
 practicumMapkup = InlineKeyboardMarkup(row_width=1)
 for key, value in praticumDict.items():
-    practicumMapkup.insert(InlineKeyboardButton(text=key, callback_data=f'practicum:{value}'))
-practicumMapkup.insert(InlineKeyboardButton(text='⬅️ Ortga', callback_data='practicum:back'))
+    practicumMapkup.insert(InlineKeyboardButton(text=key, callback_data=f"practicum:{value}"))
+# practicumMapkup.insert(InlineKeyboardButton(text='⬅️ Ortga', callback_data='practicum:back'))
