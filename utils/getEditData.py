@@ -81,7 +81,7 @@ def getArticle(blogName):
     article += date
     return title
 
-async def getArticlePiece(blogName):
+async def get_article_piece(blogName):
     output = {}
     page = f"https://mohirdev.uz/{blogName}"
     r = requests.get(page)
@@ -89,10 +89,9 @@ async def getArticlePiece(blogName):
         return None
     soup = BeautifulSoup(r.text, 'html.parser')
     # maqola rasmini olish
-    # img = str(soup.find_all(class_="featured-wrap"))
-    # m = img.index('https:')
-    # n = img.index('.jpg')
-    # img = img[m:n+4]
+    image = str(soup.find_all(class_="featured-wrap"))
+    image = image[image.index('src="')+5:]
+    imageLink = image[:image.index('"')]
     # maqola sarlavhasini ajratib olish
     title = str(soup.find_all(class_="content-item-title"))
     title = title.replace(' class="content-item-title"','')
@@ -122,13 +121,15 @@ async def getArticlePiece(blogName):
     article += f"🔗Batafsil: https://mohirdev.uz/{blogName}\n\n"
     article += date
     output['article'] = article
-    # output['img'] = img
+    output['imageLink'] = imageLink
     return output
 
 if __name__ == '__main__':
-    # for i in range(1,9):
-    # print(getBlogNames(i))
+    for i in range(1,9):
+        print(getBlogNames(i))
+        print('\n')
     # print(getArticle("data-science-yol-xaritasi"))
-    # print(getArticlePiece("data-science-yol-xaritasi"))
-    for i in range(1,12):
-        print(getBlogPhotos(i))
+    # example = get_article_piece("data-science-yol-xaritasi")
+    # print(example)
+    # for i in range(1,12):
+    #     print(getBlogPhotos(i))

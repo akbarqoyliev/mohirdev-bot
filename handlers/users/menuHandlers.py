@@ -3,7 +3,7 @@ from os import replace
 from typing import Text
 
 from requests.api import delete
-from loader import dp
+from loader import dp, bot
 from aiogram.types import Message, CallbackQuery, inline_keyboard, reply_keyboard
 from aiogram.dispatcher import FSMContext
 
@@ -16,9 +16,10 @@ from data.coursesData import instuctorsImage, instuctors
 
 
 @dp.message_handler(text_contains="Kurslar")
-async def select_course(message: Message):
+async def select_course(message: Message, state: FSMContext):
     await message.answer(text="💻 Kurslar",reply_markup=cancel_button)
-    await message.answer(f"Kerakli kurs bo'limini tanlang", reply_markup=categoryCourses)
+    msg = await message.answer(f"Kerakli kurs bo'limini tanlang", reply_markup=categoryCourses)
+    await state.update_data(msg_id=msg.message_id)
 
 @dp.message_handler(text="📜 Biz haqimizda")
 async def get_about(message: Message):
@@ -35,11 +36,18 @@ async def get_about(message: Message):
     await message.answer(text=text,disable_web_page_preview=True)
 
 @dp.message_handler(text_contains='Bekor qilish')
-async def cancel(message: Message):
+async def cancel(message: Message, state: FSMContext):
+    data = await state.get_data()
+    msg_id = data.get('msg_id')
+    try:
+        await bot.delete_message(chat_id=message.from_user.id, message_id=msg_id)
+    except:
+        await bot.delete_message(chat_id=message.from_user.id, message_id=message.message_id-1)
     await message.answer(text="Kerakli bo'limni tanlang 👇",reply_markup=menuStart)
+    
 
 
-@dp.message_handler(text='salom')
-async def getPhoto(message: Message):
-    for key in instuctorsImage.keys():
-        await message.answer_video(video="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versASE323Rwda8jxTk9ksI1KtZybqWgjyJmU2G0qFBwNrf9OFtSwCJV&playbackInfo=eyJ2aWRlb0lkIjoiZjUzZmYzNTI3Njg5NGU5YmI4Njg1N2QyYWY5OTk1ZmQifQ==")
+# @dp.message_handler(text='salom')
+# async def getPhoto(message: Message):
+#     for key in instuctorsImage.keys():
+#         await message.answer_video(video="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versASE323Rwda8jxTk9ksI1KtZybqWgjyJmU2G0qFBwNrf9OFtSwCJV&playbackInfo=eyJ2aWRlb0lkIjoiZjUzZmYzNTI3Njg5NGU5YmI4Njg1N2QyYWY5OTk1ZmQifQ==")

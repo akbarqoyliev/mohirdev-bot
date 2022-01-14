@@ -7,7 +7,7 @@ from aiogram.dispatcher import FSMContext
 
 from data.coursesData import instuctorsImage, instuctors
 # from states.categories import TeacherState
-from keyboards.inline.coursesKeyboard import instuctorsKeyboard, getTeacherCoursesKeyboard, courses_list
+from keyboards.inline.coursesKeyboard import instuctorsKeyboard, getTeacherCoursesKeyboard, courses_list, i_donot_know
 from keyboards.inline.callback_data import teacher_callback, course_callback
 from keyboards.inline.productsKeyboard import categoryCourses
 from keyboards.default.assistantKeyboards import cancel_button
@@ -52,6 +52,11 @@ async def courses_handler(call: CallbackQuery):
 @dp.callback_query_handler(course_callback.filter(item_name='back_to_courses'))
 async def back_courses(call: CallbackQuery):  
     await call.message.edit_reply_markup(reply_markup=categoryCourses)
+
+@dp.callback_query_handler(course_callback.filter())
+async def show_course(call: CallbackQuery):
+    url = f"https://mohirdev.uz/courses/{call.data[call.data.index(':')+1:]}"
+    await call.message.answer(text=f"<a href='{url}'>Kursga link</a>", reply_markup=await i_donot_know(url))
 
 # @dp.callback_query_handler(course_callback.filter())
 # async def get_courses(call: CallbackQuery):

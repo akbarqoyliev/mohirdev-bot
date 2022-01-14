@@ -23,4 +23,15 @@ async def courses_list(type):
     courses.insert(InlineKeyboardButton(text='⬅️ Ortga', callback_data=course_callback.new(item_name='back_to_courses')))
     return courses
 
+async def i_donot_know(url):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text='👥 Ulashish', switch_inline_query="Eng yaxshi video darslik👍"),
+                InlineKeyboardButton(text='❌', callback_data='delete'),
+                InlineKeyboardButton(text="👀 Ko'rish", url=url)
+            ]
+        ]
+    )
+    return keyboard
     

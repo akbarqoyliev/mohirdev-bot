@@ -1,6 +1,6 @@
 import logging
 from re import A
-from loader import dp
+from loader import dp, bot
 
 from aiogram import types
 from aiogram.dispatcher import FSMContext
@@ -13,8 +13,8 @@ from keyboards.inline.callback_data import blog_callback
 from keyboards.inline.clerkKeyboards import readingArticle
 from keyboards.default.startMenu import menuStart
 from states.blogPages import BlogState
-from data.categoryData import blogNames, blogPhotos
-from filters.getEditData import getArticle, getArticlePiece
+from data.blog import blogNames, blogPhotos
+from utils.getEditData import getArticle, get_article_piece
 
 
 @dp.message_handler(text_contains="Blog", state=None)
@@ -58,9 +58,9 @@ async def get_article(call: CallbackQuery, state: FSMContext):
     k = 0
     for value in blogNames[int(page_num)].values():
         if k == int(call.data[-1]):
-            response = await getArticlePiece(value)
+            response = await get_article_piece(value)
             keyboard = await readingArticle(value)
-            photo = blogPhotos[value]
+            photo = response['imageLink']
             break
         k += 1
     await call.message.delete()
@@ -74,6 +74,7 @@ async def delete_article(call: CallbackQuery, state: FSMContext):
 
 @dp.message_handler(text_contains='Bekor qilish', state=BlogState.blogstate)
 async def cancel(message: Message, state: FSMContext):
+    await bot.delete_message(chat_id=message.from_user.id, message_id=message.message_id-1)
     await message.answer(text="Kerakli bo'limni tanlang 👇",reply_markup=menuStart)
     await state.update_data(variable = False)
     await state.finish()
